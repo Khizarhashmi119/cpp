@@ -193,8 +193,8 @@ void pattern14(int n)
   {
     for (int j = 0; j < i + 1; j++)
     {
-      cout << char(j + 65);
-      // cout << char(j + 97);
+      cout << char(j + 'A');
+      // cout << char(j + 'a');
     }
 
     cout << endl;
@@ -207,7 +207,7 @@ void pattern15(int n)
   {
     for (int j = 0; j < n - i; j++)
     {
-      cout << char(j + 65);
+      cout << char(j + 'A');
     }
 
     cout << endl;
@@ -220,7 +220,7 @@ void pattern16(int n)
   {
     for (int j = 0; j < i + 1; j++)
     {
-      cout << char(i + 65);
+      cout << char(i + 'A');
     }
 
     cout << endl;
@@ -238,12 +238,12 @@ void pattern17(int n)
 
     for (int k = 0; k < i + 1; k++)
     {
-      cout << char(k + 65);
+      cout << char(k + 'A');
     }
 
     for (int l = i; l > 0; l--)
     {
-      cout << char(l + 64);
+      cout << char(l + 'A' - 1);
     }
 
     cout << endl;
@@ -256,7 +256,7 @@ void pattern18(int n)
   {
     for (int j = 0; j < i + 1; j++)
     {
-      cout << char(n - i + j + 64);
+      cout << char(n - i + j + 'A' - 1);
     }
 
     cout << endl;
@@ -386,11 +386,41 @@ void pattern22(int n)
   }
 }
 
+// **************
+// Extra patterns
+// **************
+
+void pattern23(int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < i + 1; j++)
+    {
+      cout << i + j + 1;
+    }
+
+    cout << endl;
+  }
+}
+
+void pattern24(int n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < i + 1; j++)
+    {
+      cout << i - j + 1;
+    }
+
+    cout << endl;
+  }
+}
+
 int main()
 {
   int n = 0;
   cout << "Enter the number of rows: ";
   cin >> n;
-  pattern22(n);
+  pattern24(n);
   return 0;
 }
