@@ -4,16 +4,18 @@ using namespace std;
 
 int main()
 {
-  int n = 10;
-
-  int a1 = 0;
-  int a2 = 1;
+  int num1 = 0, num2 = 1, n;
+  cout << "Enter the value of n: ";
+  cin >> n;
 
   for (int i = 1; i <= n; i++)
   {
-    cout << "a" << i << " -> " << a1 << endl;
-    int temp = a2;
-    a2 = a1 + a2;
-    a1 = temp;
+    cout << num1 << " ";
+    int num3 = num1 + num2;
+    num1 = num2;
+    num2 = num3;
   }
+
+  cout << endl;
+  return 0;
 }
