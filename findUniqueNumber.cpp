@@ -1,12 +1,13 @@
 #include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-int findUniqueNumber(int numbers[], int size)
+int findUniqueNumber(vector<int> numbers)
 {
   int ans = 0;
 
-  for (int i = 0; i < size; i++)
+  for (int i = 0; i < numbers.size(); i++)
     ans = ans ^ numbers[i];
 
   return ans;
@@ -14,7 +15,7 @@ int findUniqueNumber(int numbers[], int size)
 
 int main()
 {
-  int numbers[100] = {
+  vector<int> numbers = {
       1,
       3,
       4,
@@ -27,6 +28,6 @@ int main()
       5,
       5};
 
-  cout << "Unique number:- " << findUniqueNumber(numbers, 11) << endl;
+  cout << "Unique number:- " << findUniqueNumber(numbers) << endl;
   return 0;
 }

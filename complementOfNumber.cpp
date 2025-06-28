@@ -5,7 +5,7 @@ using namespace std;
 
 int complementOfNumber(int number)
 {
-  int ans = 0, i = 0;
+  // int ans = 0, i = 0;
 
   // while (number)
   // {
@@ -31,11 +31,12 @@ int complementOfNumber(int number)
   //   i++;
   // }
 
+  // return ans;
+
   if (number == 0)
     return 1;
 
-  int mask = 0;
-  int temp = number;
+  int mask = 0, temp = number;
 
   while (temp)
   {
@@ -43,7 +44,6 @@ int complementOfNumber(int number)
     temp = temp >> 1;
   }
 
-  // return ans;
   return (~number) & mask;
 }
 

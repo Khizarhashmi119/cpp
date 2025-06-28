@@ -1,6 +1,131 @@
 #include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
+
+pair<int, int> firstAndLastPosition(vector<int> &numbers, int k)
+{
+     int start = 0, end = numbers.size() - 1, firstOccurrenceIndex = 0, lastOccurrenceIndex = 0;
+
+     while (start <= end)
+     {
+          int mid = start + (end - start) / 2;
+
+          if (numbers[mid] == k)
+          {
+               firstOccurrenceIndex = mid;
+               end = mid - 1;
+          }
+          else if (numbers[mid] > k)
+          {
+               end = mid - 1;
+          }
+          else
+          {
+               start = mid + 1;
+          }
+     }
+
+     start = 0;
+     end = numbers.size() - 1;
+
+     while (start <= end)
+     {
+          int mid = start + (end - start) / 2;
+
+          if (numbers[mid] == k)
+          {
+               lastOccurrenceIndex = mid;
+               start = mid + 1;
+          }
+          else if (numbers[mid] > k)
+          {
+               end = mid - 1;
+          }
+          else
+          {
+               start = mid + 1;
+          }
+     }
+
+     return pair<int, int>{firstOccurrenceIndex, lastOccurrenceIndex};
+}
+
+int peakIndexInMountainArray(vector<int> &numbers)
+{
+     // int start = 0, end = numbers.size() - 1;
+     int start = 1, end = numbers.size() - 2;
+
+     while (start <= end)
+     {
+          int mid = start + (end - start) / 2;
+
+          if (numbers[mid] > numbers[mid - 1] and numbers[mid] > numbers[mid + 1])
+          {
+               return mid;
+          }
+          else if (numbers[mid] < numbers[mid + 1])
+          {
+               start = mid + 1;
+          }
+          else if (numbers[mid - 1] > numbers[mid])
+          {
+               // end = mid;
+               end = mid - 1;
+          }
+     }
+
+     while (start <= end)
+     {
+          int mid = start + (end - start) / 2;
+
+          if (numbers[mid] > numbers[mid + 1])
+          {
+               if (numbers[mid - 1] < numbers[mid])
+               {
+                    return mid;
+               }
+               else
+               {
+                    end = mid - 1;
+               }
+          }
+          else
+          {
+               start = mid + 1;
+          }
+     }
+
+     return -1;
+}
+
+int findPivotIndex(vector<int> numbers)
+{
+     int start = 0, end = numbers.size() - 1, last = end;
+
+     while (start <= end)
+     {
+          int mid = start + (end - start) / 2;
+
+          if (numbers[mid] <= numbers[last])
+          {
+               if (numbers[mid] < numbers[mid - 1])
+               {
+                    return mid;
+               }
+               else
+               {
+                    end = mid - 1;
+               }
+          }
+          else
+          {
+               start = mid + 1;
+          }
+     }
+
+     return -1;
+}
 
 int main()
 {
@@ -63,44 +188,41 @@ int main()
      //      cout << arrayOfInt[i] << " ";
      // cout << endl;
 
-     int size;
+     // int size;
+     // cout << "Enter the size of array:-" << endl;
+     // cin >> size;
+     // float arrayOfFloat[size];
+     // fill_n(arrayOfFloat, size, 1.1);
 
-     cout << "Enter the size of array:-" << endl;
-     cin >> size;
+     // for (int i = 0; i < size; i++)
+     //      cout << arrayOfFloat[i] << " ";
+     // cout << endl;
 
-     float arrayOfFloat[size];
-
-     fill_n(arrayOfFloat, size, 1.1);
-
-     for (int i = 0; i < size; i++)
-          cout << arrayOfFloat[i] << " ";
-     cout << endl;
-
-     cout << sizeof(arrayOfFloat) / sizeof(float) << endl;
+     // cout << sizeof(arrayOfFloat) / sizeof(float) << endl;
 
      // cout << "Size of double is " << sizeof(double) << "byte" << endl;
 
      // string data type
      // string name = "Muhammad";
-     // cout << name.length() << endl;
-     // cout << name.capacity() << endl;
-     // cout << name.append(" Ahmed") << endl;
-     // cout << name << endl;
-     // cout << name.length() << endl;
-     // cout << name.capacity() << endl;
-     // cout << name.assign("Mohammad") << endl;
-     // cout << name << endl;
-     // cout << name.at(1) << endl;
-     // cout << name << endl;
-     // cout << name.back() << endl;
-     // cout << name.length() << endl;
-     // cout << name.capacity() << endl;
+     // cout << "name length " << name.length() << endl;
+     // cout << "name capacity " << name.capacity() << endl;
+     // cout << "name append " << name.append(" Ahmed!!") << endl;
+     // cout << "name " << name << endl;
+     // cout << "name length " << name.length() << endl;
+     // cout << "name capacity " << name.capacity() << endl;
+     // cout << "name assign " << name.assign("Mohammad") << endl;
+     // cout << "name " << name << endl;
+     // cout << "name at " << name.at(1) << endl;
+     // cout << "name " << name << endl;
+     // cout << "name back " << name.back() << endl;
+     // cout << "name length " << name.length() << endl;
+     // cout << "name capacity " << name.capacity() << endl;
 
      // name = "Isa";
 
      // cout << name << endl;
-     // cout << name.length() << endl;
-     // cout << name.capacity() << endl;
+     // cout << "name length " << name.length() << endl;
+     // cout << "name capacity " << name.capacity() << endl;
 
      // int character = 'a';
      // int intNumber = 123.5;
@@ -173,5 +295,16 @@ int main()
      // cout << a << "<<" << b << " -> " << (a << b) << endl;
      // cout << a << ">>" << b << " -> " << (a >> b) << endl;
 
+     // vector<int> numbers = {0, 0, 1, 1, 2, 2, 2, 2};
+     // int k = 2;
+     // pair<int, int> results = firstAndLastPosition(numbers, k);
+     // cout << "First position: " << results.first << endl;
+     // cout << "Second position: " << results.second << endl;
+
+     // vector<int> numbers = {3, 5, 3, 2, 0};
+     // cout << "Peak index: " << peakIndexInMountainArray(numbers) << endl;
+
+     vector<int> numbers = {2, 3, 7, 9, 1};
+     cout << "Pivot index: " << findPivotIndex(numbers) << endl;
      return 0;
 }
